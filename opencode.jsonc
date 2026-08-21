@@ -1,0 +1,62 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Modelos base por defecto globales
+  "model": "opencode/deepseek-v4-flash-free",
+  "small_model": "nvidia/nvidia/nemotron-3-nano-30b-a3b",
+
+  // Configuración de Agentes (Sintaxis singular verificada)
+  "agent": {
+    
+    // AGENTE: MODO PLAN
+    "plan": {
+      "mode": "primary",
+      "model": "opencode/hy3-free",
+      "tools": {
+        "bash": true, // SOLUCIÓN: Cambiado boolean "true" para habilitar la herramienta
+        "edit": true  // SOLUCIÓN: Cambiado boolean "true" para habilitar la herramienta
+      }
+    },
+
+    // AGENTE: MODO BUILD
+    "build": {
+      "mode": "primary",
+      "model": "opencode/deepseek-v4-flash-free",
+      "tools": {
+        "bash": true,
+        "edit": true
+      }
+    },
+
+    // AGENTE: MODO EXPLORE
+    "explore": {
+      "mode": "primary", 
+      "model": "nvidia/nvidia/nemotron-3.5-lightning-30b-a3b",
+      "tools": {
+        "bash": true,
+        "edit": true
+      }
+    },
+
+    // AGENTE: MODO GENERAL
+    "general": {
+      "mode": "primary",
+      "model": "nvidia/nvidia/nemotron-3-nano-30b-a3b",
+      "tools": {
+        "bash": true,
+        "edit": true
+      }
+    }
+  },
+
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+
+  // Capa global de directivas: Aquí SÍ se usan las cadenas "allow"/"ask"/"deny"
+  "permission": {
+    "edit": "allow", 
+    "bash": "allow"  
+  }
+}
